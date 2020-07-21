@@ -1,0 +1,35 @@
+﻿
+@model RVAS.Models.Standing
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <div>
+
+        @foreach (var s in Model.Table)
+        {
+            <table>
+
+                <tr>
+                    <td>@s.Team.Name</td>
+                    <td><img src =@s.Team.CrestUrl height="50" width="50"  /></td>
+                    <td>@s.Points</td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+            </table>
+        }
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿
+@model RVAS.Models.HeadStanding
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <div>
+
+        <h2>@Model.Competition.LastUpdated.GetType()</h2>
+        <h2>@Model.Season.StartDate.GetType()</h2>
+        <h2>@Model.Season.EndDate.GetType()</h2>
+        
+    </div>
+</body>
+</html>

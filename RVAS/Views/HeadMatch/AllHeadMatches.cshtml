@@ -1,0 +1,22 @@
+﻿@model IEnumerable<RVAS.Models.HeadMatch>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AllHeadMatches</title>
+</head>
+<body>
+    <div> 
+        @foreach(var hm in Model)
+        {
+        <h2>@hm.Match.HomeTeam.Name</h2>
+        <h2>@hm.Match.AwayTeam.Name</h2>
+        }
+    </div>
+</body>
+</html>

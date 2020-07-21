@@ -1,0 +1,25 @@
+﻿@model RVAS.Models.HeadMatchListByCompetition
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HeadMatchListByCompetitions</title>
+</head>
+<body>
+    <div>
+        <h2></h2>
+        @foreach(var x in Model.Matches)
+        {
+            <p>@x.HomeTeam.Name @x.AwayTeam.Name</p>
+            <p>@x.Id</p>
+            
+        }
+
+    </div>
+</body>
+</html>

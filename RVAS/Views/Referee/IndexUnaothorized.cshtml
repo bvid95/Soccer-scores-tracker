@@ -1,0 +1,39 @@
+﻿@model IEnumerable<RVAS.Models.Referee>
+@{
+    Layout ="~/Views/Shared/_Layout.cshtml" ;
+}
+
+
+    <div>
+        <table class="table" id="referees">
+
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var r in Model)
+                {
+                    <tr>
+                        <td>
+                            <p>@r.Name</p>
+                        </td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @section scripts{
+        <script>
+        $(document).ready(function () {
+            $("#referees").dataTable();  
+           
+        }); 
+        
+    </script>
+        }
+    
+

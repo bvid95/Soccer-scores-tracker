@@ -1,0 +1,53 @@
+﻿@model IEnumerable<RVAS.Models.Player>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <div>
+        <table class="table" id="player">
+
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.Name</td>
+
+
+                        @if (p.Position == null)
+                        {
+                            <td>Coach</td>
+
+                        }
+                        else
+                        {
+
+                            <td>@p.Position</td>
+                        }
+                        
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+    </div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#player").dataTable();
+        })
+      
+    </script>
+}
+

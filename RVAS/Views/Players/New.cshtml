@@ -1,0 +1,64 @@
+﻿@model RVAS.Models.Player
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    
+    @using (Html.BeginForm("Create", "Players"))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(m => m.CountryOfBirth)
+            @Html.TextBoxFor(m => m.CountryOfBirth, new { @class = "form-control" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.DateOfBirth)
+            @Html.TextBoxFor(m => m.DateOfBirth, "{0:d - MMM - yyy}", new { @class = "form-control" })
+
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName)
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Id)
+            @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName)
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastUpdated)
+            @Html.TextBoxFor(m => m.LastUpdated, new { @class = "form-control" })
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Nationality)
+            @Html.TextBoxFor(m => m.Nationality, new { @class = "form-control" })
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Position)
+            @Html.TextBoxFor(m => m.Position, new { @class = "form-control" })
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    }
+

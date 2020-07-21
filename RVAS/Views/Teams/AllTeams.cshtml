@@ -1,0 +1,74 @@
+﻿@model IEnumerable<RVAS.Models.Team>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <table class="table" id="player">
+
+
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>ClubColors</th>
+                <th>Email</th>
+                <th>Founded</th>
+                <th>Phone</th>
+                <th>ShortName</th>
+                <th>Venue</th>
+                <th>Website</th>
+                <th>Tla</th>
+                <th>Delete</th>
+                <th>Edit</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in Model)
+            {
+                <tr>
+
+                    @if (t.CrestUrl == null)
+                    {
+                        <td><img width="100" height="100" src="https://www.hallofnamesatlineage.com/wp-content/themes/hon/includes/images/base/new.png" /></td>
+                    }
+                    else
+                    {
+
+                        <td><img width="100" height="100" src="@Url.Content(t.CrestUrl)" /></td>
+
+                    }
+                    <td>@t.Name</td>
+                    <td>@t.Address</td>
+                    <td>@t.ClubColors</td>
+                    <td>@t.Email</td>
+                    <td>@t.Founded</td>
+                    <td>@t.Phone</td>
+                    <td>@t.ShortName</td>
+                    <td>@t.Venue</td>
+                    <td>@t.Website</td>
+                    <td>@t.Tla</td>
+                    <td>@Html.ActionLink("Delete", "Delete", "Teams", new { id = t.Id }, null)</td>
+                    <td>@Html.ActionLink("Edit", "Edit", "Teams", new { id = t.Id }, null)</td>
+
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+        @Html.ActionLink("Add new Team", "New", "Teams")
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#player").dataTable();
+        })
+
+    </script>
+}

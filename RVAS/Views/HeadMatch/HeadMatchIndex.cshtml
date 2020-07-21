@@ -1,0 +1,44 @@
+﻿@model RVAS.Models.HeadMatch
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <div>
+        <h2> @Model.Match.Competition.Name </h2>
+        <h2> @Model.Match.HomeTeam.Name </h2>
+        <h2> @Model.Match.Score.FullTime.HomeTeam </h2>
+        <h2> @Model.Match.AwayTeam.Name </h2>
+        <h2> @Model.Match.Score.FullTime.AwayTeam </h2>
+        <br /><br />
+        <h1>H2H</h1>
+        <h2> @Model.Match.HomeTeam.Name </h2>
+        <h2>@Model.Head2Head.HomeTeam.Wins Pobede</h2>
+        <h2>@Model.Head2Head.HomeTeam.Losses Porazi</h2>
+        <h2>@Model.Head2Head.HomeTeam.Draws Neresno</h2>
+
+
+        <h2>@Model.Head2Head.AwayTeam.Name</h2>
+        <h2>@Model.Head2Head.AwayTeam.Wins PObede</h2>
+        <h2>@Model.Head2Head.AwayTeam.Losses POrazi</h2>
+        <h2>@Model.Head2Head.AwayTeam.Draws Nereseno</h2>
+
+
+
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>

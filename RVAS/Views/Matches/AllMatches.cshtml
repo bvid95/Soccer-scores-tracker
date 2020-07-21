@@ -1,0 +1,51 @@
+﻿@model RVAS.Models.ViewModels.MatchScoreViewModel
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+<div>
+    <h2>Past Matches</h2>
+
+    
+    <div class="col-md-4 offset-md-6">
+        @using (Html.BeginForm("AllMatches", "Matches", FormMethod.Get))
+        {<div class="form-inline">
+                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control mr-1" }) <small>Type match status.</small>
+                <button type="submit" value="Search" class="btn btn-primary margin-20">Search</button>
+            </div>
+        }
+    </div>
+
+    <table class="table" id="match">
+
+
+        <thead>
+            <tr>
+                <th>Match</th>
+                <th>
+                    @Html.ActionLink("Date", "AllMatches", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+                @foreach (var m in Model.Matches)
+                {
+                    <tr>
+                        <td>@m.HomeTeam.Name @m.Score.FullTime.HomeTeam : @m.Score.FullTime.AwayTeam @m.AwayTeam.Name</td>
+                        <td>@m.UtcDate.Value.ToString("dd. MM. yyyy")</td>
+                    </tr>
+
+                }
+            
+        </tbody>
+    </table>
+
+</div>
+  Page @(Model.Matches.PageCount < Model.Matches.PageNumber ? 0 : Model.Matches.PageNumber) of @Model.Matches.PageCount
+@Html.PagedListPager(Model.Matches, page => Url.Action("AllMatches", new { page }))
+
+
+
+

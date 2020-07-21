@@ -1,0 +1,56 @@
+﻿@model IEnumerable<RVAS.Models.Player>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <div>
+        <table class="table" id="player">
+
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.Name</td>
+
+
+                        @if (p.Position == null)
+                        {
+                            <td>Coach</td>
+
+                        }
+                        else
+                        {
+
+                            <td>@p.Position</td>
+                        }
+                        <td>@Html.ActionLink("Delete", "Delete", "Players", new { id = p.Id }, null)</td>
+
+                        <td>@Html.ActionLink("Edit", "Edit", "Players", new { id = p.Id }, null)</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @Html.ActionLink("Add new Player", "New", "Players")
+    </div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#player").dataTable();
+        })
+      
+    </script>
+}
+

@@ -1,0 +1,57 @@
+﻿@model RVAS.Models.ViewModels.BettingPairFormViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Save", "BettingPair"))
+
+        {
+            int i = 0;
+            foreach (var m in Model.BettingPairs)
+            {
+                @m.Match.HomeTeam.Name
+                @m.Match.AwayTeam.Name
+
+                @Html.Label(m.BettingTipId.ToString())
+                @Html.DropDownListFor(o => o.BettingPairs[i].BettingTipId, new SelectList(Model.BettingTips, "id", "Tip"), "Select Tip", new { @class = "form-control", @id = "bettingTip" + i })
+
+                @Html.HiddenFor(o => o.BettingPairs[i].Id, new { @id = "bettingPair" + i })
+                @*@Html.HiddenFor(o => o.BettingPairs[i].Match.Id, new { @id = "match" + i })
+                @Html.HiddenFor(o => o.BettingPairs[i].Match.AwayTeam, new { @id = "awayTeam" + i })
+                @Html.HiddenFor(o => o.BettingPairs[i].Match.HomeTeam, new { @id = "homeTeam" + i })
+                @Html.HiddenFor(o => o.BettingPairs[i].Match.LastUpdated, new { @id = "lastUpdated" + i })
+                @Html.HiddenFor(o => o.BettingPairs[i].Match.Matchday, new { @id = "matchday" + i })
+                @Html.HiddenFor(o => o.BettingPairs[i].Match.Score, new { @id = "score" + i })
+                @Html.HiddenFor(o => o.BettingPairs[i].Match.Season, new { @id = "season" + i })
+                @Html.HiddenFor(o => o.BettingPairs[i].Match.Stage, new { @id = "stage" + i })
+                @Html.HiddenFor(o => o.BettingPairs[i].Match.Status, new { @id = "status" + i })
+                @Html.HiddenFor(o => o.BettingPairs[i].Match.UtcDate, new { @id = "utcDate" + i })
+                @Html.HiddenFor(o => o.BettingPairs[i].Match.Venue, new { @id = "venue" + i })
+                foreach (var r in m.Match.Referees)
+                {
+                    @Html.Hidden(r.Id.ToString(), new { @id = "Id" + i })
+                    @Html.Hidden(r.Matches.ToString(), new { @id = "matchID" + i })
+                    @Html.Hidden(r.Name.ToString(), new { @id = "name" + i })
+
+
+                }*@
+
+
+                i++;
+            }
+
+            <button type="submit" class="btn btn-primary">Add</button>
+
+        }
+    </div>
+</body>
+</html>

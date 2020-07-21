@@ -1,0 +1,27 @@
+﻿@model RVAS.Models.ViewModels.BettingPairViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Create", "BettingPair"))
+        {
+            <div class="form-group">
+                @Html.LabelFor(s => s.MatchId)
+                @Html.ListBoxFor(s => s.MatchId, Model.Matches, new { @class = "form-control", size = 8 })
+                @Html.ValidationMessageFor(s => s.MatchId)
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add</button>
+
+        }
+</body>
+</html>

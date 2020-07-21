@@ -1,0 +1,55 @@
+﻿@model IEnumerable<RVAS.Models.Referee>
+@{
+    Layout ="~/Views/Shared/_Layout.cshtml" ;
+}
+
+
+    <div>
+        <table class="table" id="referees">
+
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var r in Model)
+                {
+                    <tr>
+                        <td>
+                            <p>@r.Name</p>
+                        </td>
+                        <td>
+
+                            <button data-referee-id="@r.Id" class="btn-link js-delete">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+        @Html.ActionLink("Add new Referee","New", "Referee")
+    @section scripts{
+        <script>
+        $(document).ready(function () {
+            $("#referees").dataTable();  
+            $("#referees .js-delete").on("click", function () {
+                var button = $(this);
+                if (confirm("Are you sure you want to delete this referee?")) {
+                    $.ajax({
+                        url: "/api/referees/" + button.attr("data-referee-id"),
+                        method: "DELETE",
+                        success: function () {
+                            button.parents("tr").remove();
+                        }
+                    })
+                }
+            });
+        }); 
+        
+    </script>
+        }
+    
+
